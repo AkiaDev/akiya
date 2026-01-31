@@ -746,36 +746,39 @@ class "w-full h-full object-cover"
         </section>
 
     </main>
+<!-- Footer -->
+<footer style="border-top:1px solid rgba(255,255,255,0.1); background:#0b0f1a; padding:40px 10px; margin-top:80px; text-align:center;">
 
-    <!-- Footer -->
-    <footer class="border-t border-white/10 bg-tech-darker py-12 mt-20">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center  <div class="flex items-center gap-3">
-              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-neon-blue to-neon-purple p-[2px] shadow-lg group-hover:rotate-12 transition-transform" >
-<div class="w-full h-full rounded-full overflow-hidden bg-black">
+  <div style="max-width:900px; margin:auto; display:flex; flex-direction:column; align-items:center; gap:15px;">
 
-<img
-
-src="images/my-logo.png"
-
-class "w-full h-full object-cover"
-
-/>
-
-</div>
-
-</div>
-                <span class="font-display font-bold text-xl text-white">TECH AKIYA</span>
-            </div>
-            <div class="text-gray-500 text-sm">
-                &copy; 2026 Tech Akiya. All rights reserved. Made with <i class="fas fa-heart text-red-500 mx-1"></i> in Sri Lanka.
-            </div>
-            <div class="flex gap-6">
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy</a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms</a>
-            </div>
+    <!-- Logo + Name -->
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div style="width:44px; height:44px; border-radius:50%; padding:2px; background:linear-gradient(45deg,#00f5ff,#a855f7);">
+        <div style="width:100%; height:100%; border-radius:50%; overflow:hidden; background:black;">
+          <img src="images/my-logo.png" style="width:100%; height:100%; object-fit:cover;">
         </div>
-    </footer>
+      </div>
+      <span style="font-weight:bold; font-size:20px; color:white;">TECH AKIYA</span>
+    </div>
 
+    <!-- Copyright -->
+    <div style="color:#888; font-size:14px;">
+      © 2026 Tech Akiya. All rights reserved. Made with ❤️ in Sri Lanka.
+    </div>
+
+    <!-- Links -->
+    <div style="display:flex; gap:20px;">
+      <a href="#" style="color:#aaa; text-decoration:none;">Privacy</a>
+      <a href="#" style="color:#aaa; text-decoration:none;">Terms</a>
+    </div>
+
+  </div>
+</footer>
+
+
+
+
+    
     <!-- Modal Notification -->
     <div id="modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center px-4">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>

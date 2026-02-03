@@ -3,1114 +3,1151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Akiya | Digital Creator & Tech Visionary</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Tech Akiya | Sri Lankan Tech Creator</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'tech-dark': '#0f172a',
-                        'tech-darker': '#020617',
-                        'neon-blue': '#00f3ff',
-                        'neon-purple': '#bc13fe',
-                        'glass': 'rgba(255, 255, 255, 0.05)',
-                    },
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'hero-pattern': "url('hero.png')",
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'spin-slow': 'spin 12s linear infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
+        /* --- CORE VARIABLES & RESET --- */
+        :root {
+            --primary: #00f2ff;      /* Neon Cyan */
+            --secondary: #7000ff;    /* Deep Purple */
+            --accent: #ff0055;       /* Neon Pink/Red for contrast */
+            --dark: #05050a;
+            --darker: #020205;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --glass: rgba(255, 255, 255, 0.05);
+            --text-main: #e0e0e0;
+            --text-light: #ffffff;
+        }
 
-
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            background-color: #020617;
-            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--dark);
+            color: var(--text-main);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00f3ff; 
+        h1, h2, h3, h4 {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--text-light);
+            font-weight: 700;
         }
 
-        /* Glassmorphism Utilities */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
         }
 
-        .glass-nav {
-            background: rgba(2, 6, 23, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        /* --- UTILITY CLASSES --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 0;
         }
 
-        /* Neon Glow Effects */
-        .neon-text {
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
         }
         
-        .neon-border:hover {
-            box-shadow: 0 0 15px rgba(188, 19, 254, 0.5);
-            border-color: rgba(188, 19, 254, 0.8);
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
         }
 
-        /* Gradient Text */
-        .text-gradient {
-            background: linear-gradient(to right, #00f3ff, #bc13fe);
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(5, 5, 10, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px; /* Offset for sticky nav */
+        }
+
+        /* Background Animation Canvas */
+        #bg-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #05050a 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Animation Utilities */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
         }
 
-        /* Glitch Effect for specific elements */
-        .glitch-wrapper {
+        .hero-text p {
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin-bottom: 2rem;
+            color: #b0b0b0;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
             position: relative;
-        }
-        
-        /* Hide sections by default for SPA feel */
-        .page-section {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        
-        .page-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Loader */
-        #loader {
-            position: fixed;
-            inset: 0;
-            background: #020617;
-            z-index: 9999;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.5s ease;
+        }
+
+        .profile-card {
+            width: 300px;
+            height: 400px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
         }
         
-        .loader-circle {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(0, 243, 255, 0.3);
+        .profile-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .profile-img-bg {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            border-top-color: #00f3ff;
-            animation: spin 1s ease-in-out infinite;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+        }
+
+        .profile-img-bg i {
+            font-size: 4rem;
+            color: white;
+        }
+
+        /* --- ABOUT SECTION --- */
+        #about {
+            background-color: var(--darker);
+            position: relative;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border-left: 4px solid var(--primary);
+        }
+
+        .about-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* --- GALLERY --- */
+        #gallery {
+            background-color: var(--dark);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 0.8;
+        }
+
+        .gallery-item i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 2.5rem;
+            color: white;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover i {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* --- SOCIALS --- */
+        #socials {
+            background-color: var(--darker);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .social-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .social-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .social-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-card.coming-soon {
+            opacity: 0.6;
+            cursor: default;
+        }
+        
+        .social-card.coming-soon:hover {
+            transform: none;
+            border-color: rgba(255,255,255,0.05);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-top: 10px;
+        }
+
+        /* --- PROJECTS --- */
+        #projects {
+            background-color: var(--dark);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .project-img {
+            height: 200px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- GIVEAWAY --- */
+        #giveaway {
+            background: linear-gradient(135deg, var(--darker) 0%, #1a0b2e 100%);
+            position: relative;
+        }
+
+        .giveaway-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .giveaway-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .giveaway-header h2 {
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+        }
+
+        .error-msg {
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-overlay {
+            display: none;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5,5,10,0.95);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .success-overlay i {
+            font-size: 4rem;
+            color: #00ff88;
+            margin-bottom: 1rem;
+        }
+
+        /* --- CONTACT --- */
+        #contact {
+            background-color: var(--darker);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (min-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1.2fr 1fr;
+            }
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .section-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(5, 5, 10, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2.5rem;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
-<body class="antialiased selection:bg-neon-blue selection:text-tech-darker">
+<body>
 
-    <!-- Loader -->
-    <div id="loader">
-        <div class="flex flex-col items-center gap-4">
-            <div class="loader-circle"></div>
-            <div class="font-display text-neon-blue tracking-widest text-sm animate-pulse">INITIALIZING SYSTEM</div>
-        </div>
-    </div>
-
-    <!-- Background Canvas for Particles -->
-    <canvas id="bgCanvas" class="fixed top-0 left-0 w-full h-full -z-10 opacity-30 pointer-events-none"></canvas>
-
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 cursor-pointer" onclick="router('home')">
-                    <div class="flex items-center gap-3 group">
-                        <div class="w-11 h-11 rounded-full bg-gradient-to-br from-neon-blue to-neon-purple p-[2px] shadow-lg group-hover:rotate-12 transition-transform" >
-<div class="w-full h-full rounded-full overflow-hidden bg-black">
-
-<img
-
-src="logo1.png"
-
-class "w-full h-full object-cover"
-
-/>
-
-</div>
-
-</div>
-                        <span class="font-display font-bold text-2xl tracking-tight text-white group-hover:text-neon-blue transition-colors">
-                            TECH AKIYA
-                        </span>
-                    </div>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <button onclick="router('home')" class="nav-link hover:text-neon-blue text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300">HOME</button>
-                        <button onclick="router('social')" class="nav-link hover:text-neon-purple text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300">SOCIAL</button>
-                        <button onclick="router('blog')" class="nav-link hover:text-neon-blue text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300">BLOG</button>
-                        <button onclick="router('giveaway')" class="nav-link hover:text-neon-purple text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative">
-                            GIVEAWAY
-                            <span class="absolute -top-1 -right-2 flex h-2 w-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-purple opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-neon-purple"></span>
-                            </span>
-                        </button>
-                        <button onclick="router('contact')" class="bg-white/10 hover:bg-neon-blue hover:text-tech-darker text-white px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 border border-white/20">CONTACT</button>
-                    </div>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="-mr-2 flex md:hidden">
-                    <button onclick="toggleMobileMenu()" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-tech-dark border-b border-white/10" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <button onclick="router('home')" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left">Home</button>
-                <button onclick="router('social')" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left">Social Media</button>
-                <button onclick="router('blog')" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left">Blog</button>
-                <button onclick="router('giveaway')" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left">Giveaway</button>
-                <button onclick="router('contact')" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left">Contact</button>
-            </div>
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-microchip"></i>
+                Tech Akiya
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#socials">Social Media</a></li>
+                <li><a href="#projects">My Projects</a></li>
+                <li><a href="#giveaway">Giveaway</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Main Content Area -->
-    <main class="pt-20 min-h-screen relative">
-        
-        <!-- HOME SECTION -->
-        <section id="home" class="page-section active">
-            <!-- Hero -->
-            <div class="relative h-[90vh] flex items-center justify-center overflow-hidden">
-                <div class="absolute inset-0 bg-hero-pattern bg-cover bg-center opacity-40"></div>
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-tech-darker/80 to-tech-darker"></div>
-                
-                <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
-                    <div class="inline-block mb-4 px-4 py-1 rounded-full border border-neon-blue/30 bg-neon-blue/10 backdrop-blur-sm animate-float">
-                        <span class="text-neon-blue text-sm font-mono tracking-wider">🇱🇰 BASED IN SRI LANKA</span>
-                    </div>
-                    
-                    <h1 class="font-display text-6xl md:text-8xl font-bold mb-6 tracking-tight">
-                        <span class="block text-white mb-2">WELCOME TO</span>
-                        <span class="text-gradient neon-text glitch-wrapper" id="scramble-text">TECH AKIYA</span>
-                    </h1>
-                    
-                    <p class="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto font-light">
-                        Exploring the future of technology, creativity, and digital culture from the pearl of the Indian Ocean.
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button onclick="router('social')" class="group relative px-8 py-4 bg-transparent border border-neon-blue text-neon-blue font-bold rounded-none overflow-hidden transition-all hover:text-tech-darker">
-                            <span class="absolute inset-0 w-full h-full bg-neon-blue transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
-                            <span class="relative flex items-center gap-2">
-                                FOLLOW THE JOURNEY <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                            </span>
-                        </button>
-                        <button onclick="scrollToAbout()" class="px-8 py-4 bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 transition-all backdrop-blur-sm">
-                            DISCOVER MORE
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Scroll Indicator -->
-                <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-                    <i class="fas fa-chevron-down text-neon-blue text-2xl opacity-70"></i>
+    <!-- HERO SECTION -->
+    <section id="home">
+        <canvas id="bg-canvas"></canvas>
+        <div class="container hero-content">
+            <div class="hero-text" data-aos="fade-right">
+                <h1>Tech Akiya</h1>
+                <h2>Tech | Websites | Digital Content</h2>
+                <p>Welcome to my digital space! I explore the latest in technology, build stunning websites, and create content that simplifies the complex world of tech for everyone.</p>
+                <div class="hero-btns">
+                    <a href="https://youtube.com/@techa856?si=XBjm-WK7MxdWZNol" target="_blank" class="btn btn-primary">
+                        <i class="fa-brands fa-youtube"></i> Subscribe
+                    </a>
+                    <a href="#socials" class="btn btn-outline">Follow Me</a>
                 </div>
             </div>
-
-            <!-- About / Intro -->
-            <div id="about-section" class="py-24 px-4 max-w-7xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                    <div class="fade-in-up">
-                        <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">
-                            Who is <span class="text-neon-purple">Tech Akiya?</span>
-                        </h2>
-                        <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                            I am a passionate digital creator and tech enthusiast from Sri Lanka. My mission is to demystify technology for the local audience while showcasing the immense creative talent present in our island nation.
-                        </p>
-                        <p class="text-gray-400 text-lg leading-relaxed mb-8">
-                            From unboxing the latest gadgets to coding tutorials and digital art, Tech Akiya is your hub for everything modern and digital.
-                        </p>
-                        
-                        <div class="flex gap-4">
-                            <div class="text-center">
-                                <div class="text-3xl font-bold text-white">50K+</div>
-                                <div class="text-sm text-gray-500 uppercase tracking-wider">Community</div>
-                            </div>
-                            <div class="w-px bg-gray-800"></div>
-                            <div class="text-center">
-                                <div class="text-3xl font-bold text-white">100+</div>
-                                <div class="text-sm text-gray-500 uppercase tracking-wider">Projects</div>
-                            </div>
-                            <div class="w-px bg-gray-800"></div>
-                            <div class="text-center">
-                                <div class="text-3xl font-bold text-white">5+</div>
-                                <div class="text-sm text-gray-500 uppercase tracking-wider">Years</div>
-                            </div>
-                        </div>
+            <div class="hero-visual" data-aos="fade-left">
+                <div class="profile-card">
+                    <div class="profile-img-bg">
+                        <i class="fa-solid fa-user-astronaut"></i>
                     </div>
-                    
-                    <div class="relative fade-in-up delay-200">
-                        <div class="absolute -inset-4 bg-gradient-to-r from-neon-blue to-neon-purple rounded-2xl opacity-30 blur-xl animate-pulse-slow"></div>
-                        <div class="relative glass-card rounded-2xl p-2 border border-white/10">
-                            <img src="img1.jpg" alt=Tech Akiya image " class="rounded-xl w-full object-cover h-[400px]">
-                            
-                            <!-- Floating Card -->
-                            <div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-lg border-l-4 border-neon-blue max-w-xs hidden md:block animate-float" style="animation-delay: 1s;">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
-                                        <i class="fas fa-wifi"></i>
-                                    </div>
-                                    <div>
-                                        <div class="text-sm font-bold text-white">Live Connection</div>
-                                        <div class="text-xs text-gray-400">Always Online</div>
-                                    </div>
-                                </div>
-                            </div>
+                    <h3>Akiya</h3>
+                    <p style="color: #aaa; font-size: 0.9rem;">Sri Lankan Tech Creator</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>Who am I?</h3>
+                    <p>I’m Tech Akiya, a passionate Sri Lankan tech content creator dedicated to bridging the gap between complex technology and everyday users.</p>
+                    <br>
+                    <p>From coding tutorials to website development showcases, my goal is to empower the next generation of digital creators in Sri Lanka and beyond.</p>
+                </div>
+                <div style="text-align: center;">
+                    <div class="profile-card" style="margin: 0 auto; height: auto; padding: 2rem;">
+                         <div class="profile-img-bg" style="width: 100px; height: 100px; margin-bottom: 0;">
+                            <i class="fa-solid fa-code" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <div style="margin-top: 1.5rem;">
+                            <h4 style="color: var(--primary); margin-bottom: 5px;">Clean Code</h4>
+                            <p style="font-size: 0.9rem; color: #888;">HTML5, CSS3, JS ES6+</p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Features Grid -->
-            <div class="py-20 bg-tech-dark/50">
-                <div class="max-w-7xl mx-auto px-4">
-                    <div class="text-center mb-16 fade-in-up">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4">What I Do</h2>
-                        <div class="h-1 w-20 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto rounded-full"></div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <!-- Card 1 -->
-                        <div class="glass-card p-8 rounded-2xl hover:border-neon-blue/50 transition-all duration-300 group fade-in-up neon-border">
-                            <div class="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <h3 class="text-xl font-bold mb-3 text-white group-hover:text-neon-blue transition-colors">Tech Reviews</h3>
-                            <p class="text-gray-400">In-depth analysis of the latest smartphones, laptops, and gadgets relevant to the Sri Lankan market.</p>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div class="glass-card p-8 rounded-2xl hover:border-neon-purple/50 transition-all duration-300 group fade-in-up delay-100 neon-border">
-                            <div class="w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h3 class="text-xl font-bold mb-3 text-white group-hover:text-neon-purple transition-colors">Coding & Dev</h3>
-                            <p class="text-gray-400">Tutorials on web development, app creation, and software engineering tips for aspiring developers.</p>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div class="glass-card p-8 rounded-2xl hover:border-pink-500/50 transition-all duration-300 group fade-in-up delay-200 neon-border">
-                            <div class="w-14 h-14 rounded-full bg-pink-500/10 flex items-center justify-center text-pink-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
-                                <i class="fas fa-paint-brush"></i>
-                            </div>
-                            <h3 class="text-xl font-bold mb-3 text-white group-hover:text-pink-400 transition-colors">Digital Art</h3>
-                            <p class="text-gray-400">Exploring creativity through digital illustration, UI/UX design, and motion graphics.</p>
-                        </div>
-                    </div>
+    <!-- IMAGE GALLERY -->
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title">My Works & Moments</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <i class="fa-solid fa-image"></i>
+                </div>
+                <div class="gallery-item">
+                    <i class="fa-solid fa-video"></i>
+                </div>
+                <div class="gallery-item">
+                    <i class="fa-solid fa-laptop-code"></i>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SOCIAL MEDIA SECTION -->
-        <section id="social" class="page-section py-20 px-4 max-w-7xl mx-auto min-h-screen">
-            <div class="text-center mb-16 fade-in-up">
-                <span class="text-neon-blue font-mono text-sm tracking-widest uppercase">Connect</span>
-                <h2 class="text-4xl md:text-6xl font-display font-bold mt-2 mb-6">Join The <span class="text-gradient">Community</span></h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Follow me across all platforms for daily updates, behind-the-scenes content, and tech discussions.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- SOCIAL MEDIA -->
+    <section id="socials">
+        <div class="container">
+            <h2 class="section-title">Connect With Me</h2>
+            <div class="social-grid">
                 <!-- YouTube -->
-                <a href="https://youtube.com/@techa856?si=XBjm-WK7MxdWZNol" class="glass-card p-8 rounded-2xl group hover:bg-red-500/10 transition-all duration-300 border border-white/5 hover:border-red-500/50 relative overflow-hidden fade-in-up">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <i class="fab fa-youtube text-9xl text-red-500 transform translate-x-4 -translate-y-4"></i>
-                    </div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 rounded-2xl bg-red-500 flex items-center justify-center text-white text-3xl mb-6 shadow-lg shadow-red-500/20 group-hover:scale-110 transition-transform">
-                            <i class="fab fa-youtube"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">YouTube</a></h3>
-                        <p class="text-gray-400 mb-4">Long-form tech reviews, vlogs, and tutorials.</p>
-                        <div class="flex items-center text-red-400 font-bold group-hover:translate-x-2 transition-transform">
-                            Subscribe <i class="fas fa-arrow-right ml-2"></i>
-                        </div>
-                    </div>
+                <a href="https://youtube.com/@techa856?si=XBjm-WK7MxdWZNol" target="_blank" class="social-card">
+                    <i class="fa-brands fa-youtube" style="color: #FF0000;"></i>
+                    <h3>YouTube</h3>
+                    <p>@techa856</p>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/share/1Jqk3CAJnJ/" target="_blank" class="social-card">
+                    <i class="fa-brands fa-facebook" style="color: #1877F2;"></i>
+                    <h3>Facebook</h3>
+                    <p>Tech Akiya</p>
                 </a>
 
                 <!-- Instagram -->
-                <a href="#" class="glass-card p-8 rounded-2xl group hover:bg-pink-500/10 transition-all duration-300 border border-white/5 hover:border-pink-500/50 relative overflow-hidden fade-in-up delay-100">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <i class="fab fa-instagram text-9xl text-pink-500 transform translate-x-4 -translate-y-4"></i>
-                    </div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 flex items-center justify-center text-white text-3xl mb-6 shadow-lg group-hover:scale-110 transition-transform">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Instagram</h3>
-                        <p class="text-gray-400 mb-4">Daily stories, reels, and aesthetic tech photography.</p>
-                        <div class="flex items-center text-pink-400 font-bold group-hover:translate-x-2 transition-transform">
-                            Follow <i class="fas fa-arrow-right ml-2"></i>
-                        </div>
-                    </div>
+                <a href="https://www.instagram.com/akila_iduranga21_?igsh=MTF6NmF4NGlyOHB6Ng==" target="_blank" class="social-card">
+                    <i class="fa-brands fa-instagram" style="color: #E1306C;"></i>
+                    <h3>Instagram</h3>
+                    <p>@akila_iduranga21_</p>
                 </a>
 
-                <!-- TikTok -->
-                <a href="#" class="glass-card p-8 rounded-2xl group hover:bg-cyan-500/10 transition-all duration-300 border border-white/5 hover:border-cyan-500/50 relative overflow-hidden fade-in-up delay-200">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <i class="fab fa-tiktok text-9xl text-cyan-400 transform translate-x-4 -translate-y-4"></i>
-                    </div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 rounded-2xl bg-black border border-white/20 flex items-center justify-center text-cyan-400 text-3xl mb-6 shadow-lg group-hover:scale-110 transition-transform">
-                            <i class="fab fa-tiktok"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">TikTok</h3>
-                        <p class="text-gray-400 mb-4">Quick tech hacks, trends, and funny moments.</p>
-                        <div class="flex items-center text-cyan-400 font-bold group-hover:translate-x-2 transition-transform">
-                            Watch <i class="fas fa-arrow-right ml-2"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Twitter/X -->
-                <a href="#" class="glass-card p-8 rounded-2xl group hover:bg-sky-500/10 transition-all duration-300 border border-white/5 hover:border-sky-500/50 relative overflow-hidden fade-in-up">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <i class="fab fa-twitter text-9xl text-sky-500 transform translate-x-4 -translate-y-4"></i>
-                    </div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 rounded-2xl bg-black border border-white/20 flex items-center justify-center text-white text-3xl mb-6 shadow-lg group-hover:scale-110 transition-transform">
-                            <i class="fab fa-x-twitter"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Twitter / X</h3>
-                        <p class="text-gray-400 mb-4">Tech news commentary and community interaction.</p>
-                        <div class="flex items-center text-sky-400 font-bold group-hover:translate-x-2 transition-transform">
-                            Tweet <i class="fas fa-arrow-right ml-2"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- LinkedIn -->
-                <a href="#" class="glass-card p-8 rounded-2xl group hover:bg-blue-700/10 transition-all duration-300 border border-white/5 hover:border-blue-700/50 relative overflow-hidden fade-in-up delay-100">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <i class="fab fa-linkedin text-9xl text-blue-700 transform translate-x-4 -translate-y-4"></i>
-                    </div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 rounded-2xl bg-blue-700 flex items-center justify-center text-white text-3xl mb-6 shadow-lg shadow-blue-700/20 group-hover:scale-110 transition-transform">
-                            <i class="fab fa-linkedin-in"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">LinkedIn</h3>
-                        <p class="text-gray-400 mb-4">Professional insights and industry networking.</p>
-                        <div class="flex items-center text-blue-400 font-bold group-hover:translate-x-2 transition-transform">
-                            Connect <i class="fas fa-arrow-right ml-2"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Discord -->
-                <a href="#" class="glass-card p-8 rounded-2xl group hover:bg-indigo-500/10 transition-all duration-300 border border-white/5 hover:border-indigo-500/50 relative overflow-hidden fade-in-up delay-200">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <i class="fab fa-discord text-9xl text-indigo-500 transform translate-x-4 -translate-y-4"></i>
-                    </div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 rounded-2xl bg-indigo-500 flex items-center justify-center text-white text-3xl mb-6 shadow-lg shadow-indigo-500/20 group-hover:scale-110 transition-transform">
-                            <i class="fab fa-discord"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Discord Server</h3>
-                        <p class="text-gray-400 mb-4">Join the squad! Chat, gaming, and tech support.</p>
-                        <div class="flex items-center text-indigo-400 font-bold group-hover:translate-x-2 transition-transform">
-                            Join Server <i class="fas fa-arrow-right ml-2"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- BLOG SECTION -->
-        <section id="blog" class="page-section py-20 px-4 max-w-7xl mx-auto min-h-screen">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 fade-in-up">
-                <div>
-                    <span class="text-neon-purple font-mono text-sm tracking-widest uppercase">Insights</span>
-                    <h2 class="text-4xl md:text-5xl font-display font-bold mt-2">Latest <span class="text-gradient">Articles</span></h2>
+                <!-- TikTok (Coming Soon) -->
+                <div class="social-card coming-soon">
+                    <i class="fa-brands fa-tiktok" style="color: #fff;"></i>
+                    <h3>TikTok</h3>
+                    <span class="badge">Coming Soon</span>
                 </div>
-                <div class="flex gap-2 mt-4 md:mt-0">
-                    <button class="px-4 py-2 rounded-full bg-white/10 text-white text-sm hover:bg-neon-blue hover:text-tech-darker transition-colors active">All</button>
-                    <button class="px-4 py-2 rounded-full bg-transparent border border-white/10 text-gray-400 text-sm hover:border-white/30 transition-colors">Tech</button>
-                    <button class="px-4 py-2 rounded-full bg-transparent border border-white/10 text-gray-400 text-sm hover:border-white/30 transition-colors">Lifestyle</button>
+
+                <!-- WhatsApp (Coming Soon) -->
+                <div class="social-card coming-soon">
+                    <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i>
+                    <h3>WhatsApp Channel</h3>
+                    <span class="badge">Coming Soon</span>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Featured Post (Large) -->
-                <div class="col-span-1 md:col-span-2 lg:col-span-2 glass-card rounded-2xl overflow-hidden group fade-in-up">
-                    <div class="relative h-64 md:h-80 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop" alt="Blog 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-tech-darker via-transparent to-transparent"></div>
-                        <div class="absolute top-4 left-4 bg-neon-blue text-tech-darker text-xs font-bold px-3 py-1 rounded-full">FEATURED</div>
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="project-grid">
+                <!-- Main Service -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fa-solid fa-globe"></i>
                     </div>
-                    <div class="p-8">
-                        <div class="flex items-center gap-4 text-sm text-gray-400 mb-4">
-                            <span><i class="far fa-calendar-alt mr-2"></i>Oct 24, 2023</span>
-                            <span><i class="far fa-clock mr-2"></i>5 min read</span>
-                        </div>
-                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-neon-blue transition-colors">The Rise of AI in Sri Lankan Startups: Opportunities & Challenges</h3>
-                        <p class="text-gray-400 mb-6 line-clamp-2">Exploring how artificial intelligence is shaping the local tech ecosystem and what it means for young entrepreneurs looking to make their mark.</p>
-                        <a href="#" class="inline-flex items-center text-neon-blue font-bold hover:underline">Read Article <i class="fas fa-arrow-right ml-2"></i></a>
+                    <div class="project-content">
+                        <h3>Website Development</h3>
+                        <p>I design and build modern, responsive websites using HTML, CSS, and JavaScript tailored to client needs.</p>
                     </div>
                 </div>
 
-                <!-- Post 2 -->
-                <div class="glass-card rounded-2xl overflow-hidden group fade-in-up delay-100 flex flex-col">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1593642632823-8f78536788c6?q=80&w=2070&auto=format&fit=crop" alt="Blog 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-tech-darker via-transparent to-transparent"></div>
+                <!-- Sample 1 -->
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(135deg, #2a0845, #6441A5);">
+                        <i class="fa-solid fa-mobile-screen"></i>
                     </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <div class="flex items-center gap-4 text-xs text-gray-400 mb-3">
-                            <span>Tech</span>
-                            <span>•</span>
-                            <span>Sep 15, 2023</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-neon-purple transition-colors">Best Budget Gaming Laptops Available in SL 2023</h3>
-                        <p class="text-gray-400 text-sm mb-4 flex-1">A comprehensive buyer's guide for students and gamers on a budget.</p>
-                        <a href="#" class="text-sm text-neon-purple font-bold hover:underline mt-auto">Read More</a>
+                    <div class="project-content">
+                        <h3>Mobile UI Design</h3>
+                        <p>Creating intuitive mobile interfaces and app concepts focused on user experience and aesthetics.</p>
                     </div>
                 </div>
 
-                <!-- Post 3 -->
-                <div class="glass-card rounded-2xl overflow-hidden group fade-in-up delay-200 flex flex-col">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="Blog 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-tech-darker via-transparent to-transparent"></div>
+                <!-- Sample 2 -->
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(135deg, #000428, #004e92);">
+                        <i class="fa-solid fa-photo-film"></i>
                     </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <div class="flex items-center gap-4 text-xs text-gray-400 mb-3">
-                            <span>Creativity</span>
-                            <span>•</span>
-                            <span>Aug 30, 2023</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-pink-400 transition-colors">Mastering Lightroom: Edit Like a Pro</h3>
-                        <p class="text-gray-400 text-sm mb-4 flex-1">Step-by-step guide to color grading your photos for that cinematic look.</p>
-                        <a href="#" class="text-sm text-pink-400 font-bold hover:underline mt-auto">Read More</a>
-                    </div>
-                </div>
-
-                <!-- Post 4 -->
-                <div class="glass-card rounded-2xl overflow-hidden group fade-in-up delay-300 flex flex-col">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop" alt="Blog 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-tech-darker via-transparent to-transparent"></div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <div class="flex items-center gap-4 text-xs text-gray-400 mb-3">
-                            <span>CyberSec</span>
-                            <span>•</span>
-                            <span>Aug 12, 2023</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-green-400 transition-colors">Staying Safe Online: A Guide for Sri Lankans</h3>
-                        <p class="text-gray-400 text-sm mb-4 flex-1">Protecting your data and privacy in an increasingly connected world.</p>
-                        <a href="#" class="text-sm text-green-400 font-bold hover:underline mt-auto">Read More</a>
+                    <div class="project-content">
+                        <h3>Video Production</h3>
+                        <p>Editing and producing high-quality tech review videos and tutorials for YouTube.</p>
                     </div>
                 </div>
             </div>
-            
-            <div class="text-center mt-12">
-                <button class="px-8 py-3 border border-white/20 rounded-full text-white hover:bg-white hover:text-tech-darker transition-all">Load More Articles</button>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- GIVEAWAY SECTION -->
-        <section id="giveaway" class="page-section py-20 px-4 max-w-7xl mx-auto min-h-screen relative overflow-hidden">
-            <!-- Decorative Elements -->
-            <div class="absolute top-20 left-0 w-64 h-64 bg-neon-purple/20 rounded-full blur-[100px]"></div>
-            <div class="absolute bottom-20 right-0 w-96 h-96 bg-neon-blue/10 rounded-full blur-[100px]"></div>
-
-            <div class="relative z-10 text-center mb-16 fade-in-up">
-                <div class="inline-block px-4 py-1 rounded-full bg-red-500/20 border border-red-500/50 text-red-400 text-sm font-bold mb-4 animate-pulse">
-                    <i class="fas fa-fire mr-2"></i> LIVE GIVEAWAY
+    <!-- GIVEAWAY -->
+    <section id="giveaway" style="position: relative;">
+        <div class="container">
+            <div class="giveaway-container">
+                <div class="success-overlay" id="giveawaySuccess">
+                    <i class="fa-solid fa-circle-check fa-beat"></i>
+                    <h2>Entry Received!</h2>
+                    <p>You have been entered into the giveaway. Good luck!</p>
+                    <button class="btn btn-outline" style="margin-top: 20px;" onclick="resetGiveaway()">Close</button>
                 </div>
-                <h2 class="text-5xl md:text-7xl font-display font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">
-                    WIN BIG!
-                </h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Enter our exclusive monthly giveaway for a chance to win amazing tech gear, gift cards, and more!</p>
-            </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Prize Display -->
-                <div class="relative fade-in-up">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl blur opacity-75 animate-pulse"></div>
-                    <div class="relative glass-card rounded-2xl p-1 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?q=80&w=2029&auto=format&fit=crop" alt="iPhone Prize" class="w-full rounded-xl">
-                        <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
-                            <h3 class="text-2xl font-bold text-white">Grand Prize: iPhone 15 Pro</h3>
-                            <p class="text-gray-300">Sponsored by Tech Akiya Community</p>
+                <div class="giveaway-header">
+                    <h2><i class="fa-solid fa-gift"></i> Tech Giveaway</h2>
+                    <p>Fill out the form below for a chance to win exclusive tech gadgets!</p>
+                </div>
+
+                <form id="giveawayForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" id="gwName" placeholder="Your Name">
+                        <span class="error-msg" id="errGwName">Please enter your name</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" id="gwEmail" placeholder="you@example.com">
+                        <span class="error-msg" id="errGwEmail">Please enter a valid email</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>YouTube Channel Name</label>
+                        <input type="text" class="form-control" id="gwYt" placeholder="@YourChannel">
+                        <span class="error-msg" id="errGwYt">Please enter your YouTube channel</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>WhatsApp Number</label>
+                        <input type="tel" class="form-control" id="gwPhone" placeholder="07X XXX XXXX">
+                        <span class="error-msg" id="errGwPhone">Please enter a valid number</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Enter Giveaway</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>070 441 8830</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>akilaiduranga@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Sri Lanka</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Entry Form -->
-                <div class="glass-card p-8 md:p-10 rounded-2xl border border-white/10 fade-in-up delay-200">
-                    <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-                        <i class="fas fa-ticket-alt text-neon-blue"></i> Enter Now
-                    </h3>
+                <form id="contactForm" style="background: var(--card-bg); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);">Send a Message</h3>
                     
-                    <form id="giveawayForm" onsubmit="handleGiveaway(event)" class="space-y-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-2">Full Name</label>
-                            <input type="text" required class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neon-blue focus:ring-1 focus:ring-neon-blue outline-none transition-all" placeholder="John Doe">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
-                            <input type="email" required class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neon-blue focus:ring-1 focus:ring-neon-blue outline-none transition-all" placeholder="john@example.com">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-2">Instagram Handle</label>
-                            <div class="relative">
-                                <span class="absolute left-4 top-3 text-gray-500">@</span>
-                                <input type="text" required class="w-full bg-black/30 border border-white/10 rounded-lg pl-8 pr-4 py-3 text-white focus:border-neon-blue focus:ring-1 focus:ring-neon-blue outline-none transition-all" placeholder="username">
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start gap-3">
-                            <input type="checkbox" required id="terms" class="mt-1 rounded border-gray-600 text-neon-blue focus:ring-neon-blue bg-black/30">
-                            <label for="terms" class="text-sm text-gray-400">I agree to the giveaway terms and privacy policy. I follow @techakiya on Instagram.</label>
-                        </div>
-
-                        <button type="submit" class="w-full bg-gradient-to-r from-neon-blue to-neon-purple text-white font-bold py-4 rounded-lg hover:opacity-90 transition-opacity shadow-lg shadow-purple-500/25 transform hover:scale-[1.02] duration-200">
-                            SUBMIT ENTRY
-                        </button>
-                    </form>
-
-                    <!-- Countdown -->
-                    <div class="mt-8 pt-8 border-t border-white/10">
-                        <p class="text-center text-sm text-gray-400 mb-4 uppercase tracking-widest">Giveaway Ends In</p>
-                        <div class="grid grid-cols-4 gap-4 text-center">
-                            <div class="bg-black/30 rounded-lg p-2">
-                                <div class="text-2xl font-bold text-white" id="days">14</div>
-                                <div class="text-xs text-gray-500">Days</div>
-                            </div>
-                            <div class="bg-black/30 rounded-lg p-2">
-                                <div class="text-2xl font-bold text-white" id="hours">08</div>
-                                <div class="text-xs text-gray-500">Hours</div>
-                            </div>
-                            <div class="bg-black/30 rounded-lg p-2">
-                                <div class="text-2xl font-bold text-white" id="minutes">45</div>
-                                <div class="text-xs text-gray-500">Mins</div>
-                            </div>
-                            <div class="bg-black/30 rounded-lg p-2">
-                                <div class="text-2xl font-bold text-white" id="seconds">12</div>
-                                <div class="text-xs text-gray-500">Secs</div>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" id="cName">
+                        <span class="error-msg" id="errCName">Required</span>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT SECTION -->
-        <section id="contact" class="page-section py-20 px-4 max-w-5xl mx-auto min-h-screen">
-            <div class="glass-card rounded-3xl overflow-hidden fade-in-up">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <!-- Info Side -->
-                    <div class="bg-gradient-to-br from-neon-blue/20 to-neon-purple/20 p-10 md:p-12 flex flex-col justify-between relative overflow-hidden">
-                        <div class="absolute inset-0 bg-tech-darker/80"></div>
-                        <div class="relative z-10">
-                            <h2 class="text-3xl font-display font-bold mb-6">Let's Collaborate</h2>
-                            <p class="text-gray-300 mb-8">Have a project in mind? Want to sponsor a video or just say hi? Drop me a message!</p>
-                            
-                            <div class="space-y-6">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-neon-blue">
-                                        <i class="fas fa-envelope"></i>
-                                    </div>
-                                    <div>
-                                        <div class="text-sm text-gray-400">Email</div>
-                                        <div class="text-white font-medium">hello@techakiya.lk</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-neon-purple">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                    </div>
-                                    <div>
-                                        <div class="text-sm text-gray-400">Location</div>
-                                        <div class="text-white font-medium">Colombo, Sri Lanka</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="relative z-10 mt-12">
-                            <p class="text-sm text-gray-400 mb-4">Follow me:</p>
-                            <div class="flex gap-4">
-                                <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-neon-blue hover:text-tech-darker flex items-center justify-center text-white transition-all"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-neon-blue hover:text-tech-darker flex items-center justify-center text-white transition-all"><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-neon-blue hover:text-tech-darker flex items-center justify-center text-white transition-all"><i class="fab fa-youtube"></i></a>
-                            </div>
-                        </div>
+                    
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" id="cEmail">
+                        <span class="error-msg" id="errCEmail">Invalid Email</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea class="form-control" rows="4" id="cMsg"></textarea>
+                        <span class="error-msg" id="errCMsg">Required</span>
                     </div>
 
-                    <!-- Form Side -->
-                    <div class="p-10 md:p-12 bg-tech-dark">
-                        <form onsubmit="handleContact(event)" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-400 mb-2">Name</label>
-                                    <input type="text" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neon-purple focus:ring-1 focus:ring-neon-purple outline-none transition-all">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
-                                    <input type="email" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neon-purple focus:ring-1 focus:ring-neon-purple outline-none transition-all">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-400 mb-2">Subject</label>
-                                <select class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neon-purple focus:ring-1 focus:ring-neon-purple outline-none transition-all">
-                                    <option>General Inquiry</option>
-                                    <option>Business Collaboration</option>
-                                    <option>Tech Support</option>
-                                    <option>Other</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-400 mb-2">Message</label>
-                                <textarea rows="4" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neon-purple focus:ring-1 focus:ring-neon-purple outline-none transition-all"></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-white text-tech-darker font-bold py-4 rounded-lg hover:bg-neon-blue transition-colors flex items-center justify-center gap-2">
-                                SEND MESSAGE <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </form>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    <div id="contactSuccess" style="margin-top: 15px; color: #00ff88; display: none; text-align: center;">
+                        <i class="fa-solid fa-check"></i> Message Sent!
                     </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-<!-- Footer -->
-<footer style="border-top:1px solid rgba(255,255,255,0.1); background:#0b0f1a; padding:40px 10px; margin-top:80px; text-align:center;">
-
-  <div style="max-width:900px; margin:auto; display:flex; flex-direction:column; align-items:center; gap:15px;">
-
-    <!-- Logo + Name -->
-    <div style="display:flex; align-items:center; gap:10px;">
-      <div style="width:44px; height:44px; border-radius:50%; padding:2px; background:linear-gradient(45deg,#00f5ff,#a855f7);">
-        <div style="width:100%; height:100%; border-radius:50%; overflow:hidden; background:black;">
-          <img src="logo1.png" style="width:100%; height:100%; object-fit:cover;">
-        </div>
-      </div>
-      <span style="font-weight:bold; font-size:20px; color:white;">TECH AKIYA</span>
-    </div>
-
-    <!-- Copyright -->
-    <div style="color:#888; font-size:14px;">
-      © 2026 Tech Akiya. All rights reserved. Made with ❤️ in Sri Lanka.
-    </div>
-
-    <!-- Links -->
-    <div style="display:flex; gap:20px;">
-      <a href="#" style="color:#aaa; text-decoration:none;">Privacy</a>
-      <a href="#" style="color:#aaa; text-decoration:none;">Terms</a>
-    </div>
-
-  </div>
-</footer>
-
-
-
-
-    
-    <!-- Modal Notification -->
-    <div id="modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center px-4">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
-        <div class="relative glass-card bg-tech-dark p-8 rounded-2xl max-w-md w-full border border-neon-blue/30 shadow-2xl shadow-neon-blue/20 transform scale-95 opacity-0 transition-all duration-300" id="modalContent">
-            <div class="text-center">
-                <div class="w-16 h-16 rounded-full bg-neon-blue/20 flex items-center justify-center text-neon-blue text-2xl mx-auto mb-4">
-                    <i class="fas fa-check"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-2" id="modalTitle">Success!</h3>
-                <p class="text-gray-400 mb-6" id="modalMessage">Your message has been sent successfully.</p>
-                <button onclick="closeModal()" class="w-full bg-neon-blue text-tech-darker font-bold py-3 rounded-lg hover:bg-white transition-colors">OKAY</button>
+                </form>
             </div>
         </div>
-    </div>
+    </section>
 
-    
+    <!-- FOOTER -->
+    <footer>
+        <div class="container" style="padding: 0;">
+            <p>&copy; 2026 Tech Akiya | All Rights Reserved</p>
+        </div>
+    </footer>
 
+    <script>
+        // --- MOBILE MENU ---
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const navLinksItems = document.querySelectorAll('.nav-links a');
 
-  <script>
-        // Loader
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            loader.style.opacity = '0';
-            setTimeout(() => {
-                loader.style.display = 'none';
-                initAnimations();
-            }, 500);
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
         });
 
-        // Navigation & Routing
-        function router(pageId) {
-            // Hide all sections
-            document.querySelectorAll('.page-section').forEach(section => {
-                section.classList.remove('active');
+        // Close mobile menu when clicking a link
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-xmark');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
             });
-            
-            // Show target section
-            const target = document.getElementById(pageId);
-            if(target) {
-                target.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                
-                // Re-trigger animations for new section
-                const elements = target.querySelectorAll('.fade-in-up');
-                elements.forEach(el => {
-                    el.classList.remove('visible');
-                    setTimeout(() => el.classList.add('visible'), 100);
-                });
-            }
+        });
 
-            // Close mobile menu if open
-            document.getElementById('mobile-menu').classList.add('hidden');
-            
-            // Update active nav state (visual only)
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('text-neon-blue', 'text-white');
-                link.classList.add('text-gray-300');
-            });
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        function scrollToAbout() {
-            document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Intersection Observer for Scroll Animations
-        function initAnimations() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
-        }
-
-        // Text Scramble Effect
-        class TextScramble {
-            constructor(el) {
-                this.el = el;
-                this.chars = '!<>-_\\/[]{}—=+*^?#________';
-                this.update = this.update.bind(this);
-            }
-            setText(newText) {
-                const oldText = this.el.innerText;
-                const length = Math.max(oldText.length, newText.length);
-                const promise = new Promise((resolve) => this.resolve = resolve);
-                this.queue = [];
-                for (let i = 0; i < length; i++) {
-                    const from = oldText[i] || '';
-                    const to = newText[i] || '';
-                    const start = Math.floor(Math.random() * 40);
-                    const end = start + Math.floor(Math.random() * 40);
-                    this.queue.push({ from, to, start, end });
-                }
-                cancelAnimationFrame(this.frameRequest);
-                this.frame = 0;
-                this.update();
-                return promise;
-            }
-            update() {
-                let output = '';
-                let complete = 0;
-                for (let i = 0, n = this.queue.length; i < n; i++) {
-                    let { from, to, start, end, char } = this.queue[i];
-                    if (this.frame >= end) {
-                        complete++;
-                        output += to;
-                    } else if (this.frame >= start) {
-                        if (!char || Math.random() < 0.28) {
-                            char = this.randomChar();
-                            this.queue[i].char = char;
-                        }
-                        output += `<span class="text-neon-blue">${char}</span>`;
-                    } else {
-                        output += from;
-                    }
-                }
-                this.el.innerHTML = output;
-                if (complete === this.queue.length) {
-                    this.resolve();
-                } else {
-                    this.frameRequest = requestAnimationFrame(this.update);
-                    this.frame++;
-                }
-            }
-            randomChar() {
-                return this.chars[Math.floor(Math.random() * this.chars.length)];
-            }
-        }
-
-        // Initialize Scramble
-        const el = document.getElementById('scramble-text');
-        if(el) {
-            const fx = new TextScramble(el);
-            let counter = 0;
-            const next = () => {
-                fx.setText('TECH AKIYA').then(() => {
-                    setTimeout(next, 3000);
-                });
-            };
-            next();
-        }
-
-        // Canvas Background Animation
-        const canvas = document.getElementById('bgCanvas');
+        // --- HERO BACKGROUND ANIMATION (Canvas) ---
+        const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
+
+        let width, height;
         let particles = [];
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
         }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
 
         class Particle {
             constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
                 this.vx = (Math.random() - 0.5) * 0.5;
                 this.vy = (Math.random() - 0.5) * 0.5;
                 this.size = Math.random() * 2;
+                this.alpha = Math.random() * 0.5 + 0.1;
             }
+
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                if (this.x < 0) this.x = width;
+                if (this.x > width) this.x = 0;
+                if (this.y < 0) this.y = height;
+                if (this.y > height) this.y = 0;
             }
+
             draw() {
-                ctx.fillStyle = 'rgba(0, 243, 255, 0.5)';
+                ctx.fillStyle = `rgba(0, 242, 255, ${this.alpha})`;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
 
-        for (let i = 0; i < 50; i++) particles.push(new Particle());
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 50; i++) {
+                particles.push(new Particle());
+            }
+        }
 
-        function animateCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
             
-            // Connect particles
-            particles.forEach((p1, i) => {
-                particles.slice(i + 1).forEach(p2 => {
-                    const dx = p1.x - p2.x;
-                    const dy = p1.y - p2.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 150) {
-                        ctx.strokeStyle = `rgba(0, 243, 255, ${0.1 - dist/1500})`;
-                        ctx.lineWidth = 0.5;
+            // Draw connections
+            ctx.strokeStyle = 'rgba(0, 242, 255, 0.05)';
+            ctx.lineWidth = 1;
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 150) {
                         ctx.beginPath();
-                        ctx.moveTo(p1.x, p1.y);
-                        ctx.lineTo(p2.x, p2.y);
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
                         ctx.stroke();
                     }
-                });
-            });
-            
-            requestAnimationFrame(animateCanvas);
-        }
-        animateCanvas();
-
-        // Form Handlers
-        function showModal(title, message) {
-            const modal = document.getElementById('modal');
-            const content = document.getElementById('modalContent');
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalMessage').innerText = message;
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                content.classList.remove('scale-95', 'opacity-0');
-                content.classList.add('scale-100', 'opacity-100');
-            }, 10);
+                }
+            }
+            requestAnimationFrame(animateParticles);
         }
 
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            const content = document.getElementById('modalContent');
-            content.classList.remove('scale-100', 'opacity-100');
-            content.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-        }
+        window.addEventListener('resize', resize);
+        resize();
+        initParticles();
+        animateParticles();
 
-        function handleGiveaway(e) {
+        // --- FORM VALIDATION: GIVEAWAY ---
+        const gwForm = document.getElementById('giveawayForm');
+        const gwOverlay = document.getElementById('giveawaySuccess');
+
+        gwForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            // Simulate API call
-            const btn = e.target.querySelector('button');
-            const originalText = btn.innerText;
-            btn.innerText = 'PROCESSING...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                showModal('Entry Submitted!', 'Good luck! You have successfully entered the giveaway. Winner will be announced on Instagram.');
-                e.target.reset();
-                btn.innerText = originalText;
-                btn.disabled = false;
-            }, 1500);
-        }
+            let isValid = true;
 
-        function handleContact(e) {
-            e.preventDefault();
-            const btn = e.target.querySelector('button');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                showModal('Message Sent!', 'Thank you for reaching out. I will get back to you within 24 hours.');
-                e.target.reset();
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }, 1500);
-        }
+            // Helper validation
+            const validate = (id, errId, type = 'text') => {
+                const el = document.getElementById(id);
+                const err = document.getElementById(errId);
+                let valid = true;
 
-        // Countdown Timer Logic
-        function updateCountdown() {
-            const endDate = new Date();
-            endDate.setDate(endDate.getDate() + 14); // 14 days from now
-            
-            setInterval(() => {
-                const now = new Date();
-                const diff = endDate - now;
-                
-                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const s = Math.floor((diff % (1000 * 60)) / 1000);
-                
-                document.getElementById('days').innerText = d < 10 ? '0'+d : d;
-                document.getElementById('hours').innerText = h < 10 ? '0'+h : h;
-                document.getElementById('minutes').innerText = m < 10 ? '0'+m : m;
-                document.getElementById('seconds').innerText = s < 10 ? '0'+s : s;
-            }, 1000);
-        }
-        updateCountdown();
+                if (type === 'email') {
+                    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    valid = re.test(el.value);
+                } else if (type === 'tel') {
+                    valid = el.value.length >= 9; // Simple check
+                } else {
+                    valid = el.value.trim() !== '';
+                }
 
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('shadow-lg');
-                nav.style.background = 'rgba(2, 6, 23, 0.95)';
-            } else {
-                nav.classList.remove('shadow-lg');
-                nav.style.background = 'rgba(2, 6, 23, 0.8)';
+                if (!valid) {
+                    err.style.display = 'block';
+                    el.style.borderColor = 'var(--accent)';
+                    isValid = false;
+                } else {
+                    err.style.display = 'none';
+                    el.style.borderColor = 'rgba(255,255,255,0.1)';
+                }
+            };
+
+            validate('gwName', 'errGwName');
+            validate('gwEmail', 'errGwEmail', 'email');
+            validate('gwYt', 'errGwYt');
+            validate('gwPhone', 'errGwPhone', 'tel');
+
+            if (isValid) {
+                gwOverlay.style.display = 'flex';
+                gwForm.reset();
             }
         });
 
-        // 3D Tilt Effect for Cards
-        document.querySelectorAll('.glass-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
+        function resetGiveaway() {
+            gwOverlay.style.display = 'none';
+        }
+
+        // --- FORM VALIDATION: CONTACT ---
+        const cForm = document.getElementById('contactForm');
+        
+        cForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let isValid = true;
+
+            const cName = document.getElementById('cName');
+            const cEmail = document.getElementById('cEmail');
+            const cMsg = document.getElementById('cMsg');
             
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-            });
+            const errName = document.getElementById('errCName');
+            const errEmail = document.getElementById('errCEmail');
+            const errMsg = document.getElementById('errCMsg');
+
+            // Name Check
+            if(cName.value.trim() === '') {
+                errName.style.display = 'block';
+                cName.style.borderColor = 'var(--accent)';
+                isValid = false;
+            } else {
+                errName.style.display = 'none';
+                cName.style.borderColor = 'rgba(255,255,255,0.1)';
+            }
+
+            // Email Check
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(!re.test(cEmail.value)) {
+                errEmail.style.display = 'block';
+                cEmail.style.borderColor = 'var(--accent)';
+                isValid = false;
+            } else {
+                errEmail.style.display = 'none';
+                cEmail.style.borderColor = 'rgba(255,255,255,0.1)';
+            }
+
+            // Msg Check
+            if(cMsg.value.trim() === '') {
+                errMsg.style.display = 'block';
+                cMsg.style.borderColor = 'var(--accent)';
+                isValid = false;
+            } else {
+                errMsg.style.display = 'none';
+                cMsg.style.borderColor = 'rgba(255,255,255,0.1)';
+            }
+
+            if(isValid) {
+                const successDiv = document.getElementById('contactSuccess');
+                successDiv.style.display = 'block';
+                cForm.reset();
+                setTimeout(() => {
+                    successDiv.style.display = 'none';
+                }, 3000);
+            }
         });
-
-//update bugs  fix 
-
-
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      document.getElementById("loader").style.display = "none";
-    }, 1500); // 1.5 seconds
-  });
     </script>
 </body>
 </html>
